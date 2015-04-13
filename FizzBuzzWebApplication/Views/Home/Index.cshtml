@@ -1,0 +1,54 @@
+﻿<!-- Banner -->
+<section id="banner">
+    <div class="inner">
+        <h2>FizzBuzz</h2>
+        <p>
+            A dynamic number<br />
+            printing web application.
+        </p>
+    </div>
+    <a href="#fizzy" class="more scrolly" style="background-color: #0094ff; border-radius: 5px;">ACTIVATE</a>
+</section>
+
+<!-- One -->
+<section id="fizzy" class="wrapper style1 special">
+    <div class="inner">
+        <header class="major">
+            <h2>
+                What is FizzBuzz?
+            </h2>
+            <p>
+                FizzBuzz is a web application that will count incrementally,
+                replacing any number divisible<br /> by three with the word "fizz", and any number divisible by five with the word "buzz".
+                <br />For numbers which are multiples of both three and five, it will print “FizzBuzz”.
+            </p>
+            <a href="#" id="prompt">Print Numbers</a><br>
+            <div>
+                <table id="grid"></table>
+                <div id="pager"></div>
+            </div>
+
+
+        </header>
+        <ul class="icons major">
+            <li><span class="icon fa-code major style1"><span class="label"></span></span></li>
+            <li><span class="icon fa-code major style2"><span class="label"></span></span></li>
+            <li><span class="icon fa-code major style3"><span class="label"></span></span></li>
+        </ul>
+    </div>
+</section>
+
+
+@section scripts{
+    <link href="~/css/alertify.core.css" rel="stylesheet" />
+    <link href="~/css/alertify.default.css" rel="stylesheet" id="toggleCSS" />
+    <script src="~/js/i18n/grid.locale-en.js"></script>
+    <script src="~/js/jquery.jqGrid.min.js"></script>
+    <script src="~/js/alertify.js"></script>
+    <script src="~/js/FizzBuzz.js"></script>
+}
+<script src="~/js/jquery.min.js"></script>
+
+
+
+

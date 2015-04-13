@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>FizzBuzz</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+   
+    <link href="~/css/alertify.core.css" rel="stylesheet" />
+    <link href="~/css/alertify.default.css" rel="stylesheet" id="toggleCSS" />
+    <link href="~/css/themes/base/jquery-ui.css" rel="stylesheet" />
+    <link href="~/css/jquery.jqGrid/ui.jqgrid.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
+<body class="landing">
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="index.html">FizzBuzz</a></h1>
+            <nav id="nav">
+                <ul>
+                    <li class="special">
+                        <a href="#" class="menuToggle"><span>Menu</span></a>
+                        <div id="menu">
+                            <ul>
+                                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        @RenderBody()
+       
+        <!-- Footer -->
+        <footer id="footer">
+            <ul class="copyright">
+                <li>&copy; FizzBuzz</li>
+                <li>Programmed: Joseph Garza</li>
+            </ul>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery.scrollex.min.js"></script>
+    <script src="~/js/jquery.scrolly.min.js"></script>
+    <script src="~/js/skel.min.js"></script>
+    <script src="~/js/init.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>
