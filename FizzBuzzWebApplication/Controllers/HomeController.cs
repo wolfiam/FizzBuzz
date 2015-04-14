@@ -15,12 +15,11 @@ namespace FizzBuzzWebApplication.Controllers
             return View();
         }
 
-        FizzBuzzContext db = new FizzBuzzContext();
         public JsonResult GetFizzBuzzLists(string sidx, string sord, int page, int rows)  //Gets the todo Lists.
         {
             int pageIndex = Convert.ToInt32(page) - 1;
             int pageSize = rows;
-            var todoListsResults = db.FizzBuzzLists.Select(
+            var FizzBuzzResults = FizzBuzzContext.dbconn.FizzBuzzDatabaseTables.Where(x => x.Active == 1).Select(
                     a => new
                     {
                         a.Id,
@@ -29,80 +28,74 @@ namespace FizzBuzzWebApplication.Controllers
                         a.DateTimeEntered,
                         a.Active
                     });
-            int totalRecords = todoListsResults.Count();
+            int totalRecords = FizzBuzzResults.Count();
             var totalPages = (int)Math.Ceiling((float)totalRecords / (float)rows);
             if (sord.ToUpper() == "DESC")
             {
-                todoListsResults = todoListsResults.OrderByDescending(s => s.Number);
-                todoListsResults = todoListsResults.Skip(pageIndex * pageSize).Take(pageSize);
+                FizzBuzzResults = FizzBuzzResults.OrderByDescending(s => s.Number);
+                FizzBuzzResults = FizzBuzzResults.Skip(pageIndex * pageSize).Take(pageSize);
             }
             else
             {
-                todoListsResults = todoListsResults.OrderBy(s => s.Number);
-                todoListsResults = todoListsResults.Skip(pageIndex * pageSize).Take(pageSize);
+                FizzBuzzResults = FizzBuzzResults.OrderBy(s => s.Number);
+                FizzBuzzResults = FizzBuzzResults.Skip(pageIndex * pageSize).Take(pageSize);
             }
             var jsonData = new
             {
                 total = totalPages,
                 page,
                 records = totalRecords,
-                rows = todoListsResults
+                rows = FizzBuzzResults
             };
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
 
-        // TODO:insert a new row to the grid logic here
-        [HttpPost]
-        public string Create([Bind(Exclude = "Id")] FizzBuzz objTodo)
+        public void printRange(int from, int to)
         {
-            string msg;
-            try
+            using (FizzBuzzContext connection = new FizzBuzzContext())
             {
-                if (ModelState.IsValid)
+                FizzBuzzDataContext db = new FizzBuzzDataContext();
+                Repository.deactivateNumbers();
+                if (from < to)
                 {
-                    db.FizzBuzzLists.Add(objTodo);
-                    db.SaveChanges();
-                    msg = "Saved Successfully";
+                    for (int i = from; i < to + 1; i++)
+                    {
+                        if (db.FizzBuzzDatabaseTables.Any(u => u.Number == i))
+                        {
+                            Repository.activateNumbers(i);
+                        }
+                        else
+                        {
+                            FizzBuzzDatabaseTable fb = new FizzBuzzDatabaseTable();
+                            fb.Number = i;
+                            fb.Message = "";
+                            fb.DateTimeEntered = DateTime.Now;
+                            fb.Active = 1;
+                            FizzBuzzContext.dbconn.FizzBuzzDatabaseTables.InsertOnSubmit(fb);
+                            FizzBuzzContext.dbconn.SubmitChanges();
+                        }
+                    }
                 }
-                else
-                {
-                    msg = "Validation data not successfull";
+                else{
+                    for (int i = to; i < from + 1; i++)
+                    {
+                        if (db.FizzBuzzDatabaseTables.Any(u => u.Number == i))
+                        {
+                            Repository.activateNumbers(i);
+                        }
+                        else
+                        {
+                            FizzBuzzDatabaseTable fb = new FizzBuzzDatabaseTable();
+                            fb.Number = i;
+                            fb.Message = "";
+                            fb.DateTimeEntered = DateTime.Now;
+                            fb.Active = 1;
+                            FizzBuzzContext.dbconn.FizzBuzzDatabaseTables.InsertOnSubmit(fb);
+                            FizzBuzzContext.dbconn.SubmitChanges();
+                        }
+                    }
                 }
             }
-            catch (Exception ex)
-            {
-                msg = "Error occured:" + ex.Message;
-            }
-            return msg;
-        }
-        public string Edit(FizzBuzz objTodo)
-        {
-            string msg;
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(objTodo).State = EntityState.Modified;
-                    db.SaveChanges();
-                    msg = "Saved Successfully";
-                }
-                else
-                {
-                    msg = "Validation data not successfull";
-                }
-            }
-            catch (Exception ex)
-            {
-                msg = "Error occured:" + ex.Message;
-            }
-            return msg;
-        }
-        public string Delete(int Id)
-        {
-            FizzBuzz FizzBuzzList = db.FizzBuzzLists.Find(Id);
-            db.FizzBuzzLists.Remove(FizzBuzzList);
-            db.SaveChanges();
-            return "Deleted successfully";
         }
     }
 }

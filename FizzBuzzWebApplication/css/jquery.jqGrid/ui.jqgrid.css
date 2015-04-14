@@ -222,14 +222,14 @@ tr.ui-search-toolbar select {
 }
 
 .ui-jqgrid tr.ui-row-ltr td {
-    text-align: left;
+    text-align: center;
     border-right-width: 1px;
     border-right-color: inherit;
     border-right-style: solid;
 }
 
 .ui-jqgrid tr.ui-row-rtl td {
-    text-align: right;
+    text-align: center;
     border-left-width: 1px;
     border-left-color: inherit;
     border-left-style: solid;
@@ -387,6 +387,8 @@ tr.ui-search-toolbar select {
     float: left;
     margin: 0 2px;
 }
+
+
 
 .ui-jqgrid td input,
 .ui-jqgrid td select .ui-jqgrid td textarea {
@@ -771,3 +773,4 @@ div.ui-jqgrid .selected-row td {
 .ui-jqgrid .ui-ellipsis {
     text-overflow: ellipsis;
 }
+

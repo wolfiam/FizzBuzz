@@ -8,6 +8,7 @@ namespace FizzBuzzWebApplication.Models
 {
     public class FizzBuzzContext : DbContext
     {
-      public  DbSet<FizzBuzz> FizzBuzzLists { get; set; }
+      //public  DbSet<FizzBuzzDatabaseTable> FizzBuzzDBLists { get; set; }
+        public static FizzBuzzDataContext dbconn = new FizzBuzzDataContext();
     }
 }

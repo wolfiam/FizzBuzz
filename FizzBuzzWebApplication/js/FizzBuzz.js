@@ -5,16 +5,17 @@
         mtype: 'Get',
         colNames: ['Id', 'Number', 'Message', 'DateTime Entered', 'Active'],
         colModel: [
-            { key: true, hidden: true, name: 'Id', index: 'Id', editable: true },
+            { key: true, hidden: true,  name: 'Id', index: 'Id', editable: true },
             { key: false, name: 'Number', index: 'Number', editable: true },
             { key: false, name: 'Message', index: 'Message', editable: true },
-            { key: false, name: 'DateTimeEntered', index: 'DateTimeEntered', editable: true, formatter: 'date', formatoptions: { newformat: 'd/m/Y' } },
-            { key: false, name: 'Active', index: 'Active', editable: true, },
+            { key: false, hidden: true, name: 'DateTimeEntered', index: 'DateTimeEntered', editable: true, formatter: 'date', formatoptions: { newformat: 'd/m/Y' } },
+            { key: false, hidden: true, name: 'Active', index: 'Active', editable: true, },
         ],
         pager: jQuery('#pager'),
-        rowNum: 10,
-        rowList: [10, 20, 30, 40],
-        height: '100%',
+        height: '500px',
+        rowNum: 1000000,
+        //rowList: [10, 20, 30, 40],
+        shrinktofit: true,
         viewrecords: true,
         caption: 'Todo List',
         emptyrecords: 'No records to display',
@@ -68,4 +69,5 @@
                 }
             }
         });
+
 });

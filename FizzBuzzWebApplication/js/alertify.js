@@ -139,7 +139,7 @@
                 ok = function (event) {
                     if (typeof event.preventDefault !== "undefined") event.preventDefault();
                     common(event);
-                    if (typeof input1 !== "undefined" || typeof input2 !== "undefined") val = input1.value + "-" + input2.value;
+                    if (typeof input1 !== "undefined" || typeof input2 !== "undefined") val = input1.value + "&" + input2.value;
                     if (typeof fn === "function") {
                         if (typeof input1 !== "undefined" || typeof input2 !== "undefined") {
                             fn(true, val);
@@ -664,20 +664,31 @@
             buttonFocus: "ok"
         });
     }
-
+    var printRange = $("#printRange")
 
     $("#prompt").on('click', function () {
         reset();
         alertify.prompt("What range of numbers do you want to print?", function (e, str) {
             if (e) {
-                var from = str.substr(0, str.indexOf('-'));
-                var to = str.substr(str.indexOf('-') + 1)
+                var from = str.substr(0, str.indexOf('&'));
+                var to = str.substr(str.indexOf('&') + 1);
+                var max = 5000;
+                var min = max * -1;
 
-                if (from < 0 || to < 0 || !$.isNumeric(from) || !$.isNumeric(to)) {
-                    alertify.error("I can't do what you requested.");
+                if (!$.isNumeric(from) || !$.isNumeric(to)) {
+                    alertify.error("I can't do what you requested. Please use numeric numbers only.");
+                }
+                else if (from > max || from < min || to > max || to < min) {
+                    alertify.error("I know you're excited but I limited the Min and Max to +/-" + max );
                 }
                 else {
-                    alertify.success("You've chosen to print a range from " + from + " to " + to + ".");
+                    $.ajax({
+                        type: "POST",
+                        url: '/Home/printRange' + '?from=' + from + '&to=' + to,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: alertify.success("You've chosen to print a range from " + from + " to " + to + ".")
+                    });
                 }
             }
             else {
