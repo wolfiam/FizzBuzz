@@ -322,7 +322,7 @@ tr.ui-search-toolbar select {
 
     .ui-jqgrid .ui-pg-table td {
         font-weight: normal;
-        vertical-align: middle;
+        /*vertical-align: middle;*/
         padding: 1px;
     }
 
