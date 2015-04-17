@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace FizzBuzzWebApplication.Controllers
 {
     public class HomeController : Controller
@@ -23,7 +24,7 @@ namespace FizzBuzzWebApplication.Controllers
 
         public void printRange(int from, int to)
         {
-            PrintRanges.print(from, to);
+            Common.PrintRanges.print(from, to);
         }
 
       

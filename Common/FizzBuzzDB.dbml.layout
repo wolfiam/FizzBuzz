@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="FizzBuzzDB">
+  <DataContextMoniker Name="/FizzBuzzDataContext" />
+  <nestedChildShapes>
+    <classShape Id="f111c653-f0aa-4405-b11c-b1e58b188b2a" absoluteBounds="2.125, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/FizzBuzzDataContext/FizzBuzzDatabaseTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="19e0132d-2479-4256-8f14-180a1e985eeb" absoluteBounds="2.14, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
