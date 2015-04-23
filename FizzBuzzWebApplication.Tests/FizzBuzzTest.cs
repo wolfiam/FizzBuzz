@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace FizzBuzzWebApplication.Tests
 {
     [TestClass]
-    public class PrintRangeTest
+    public class FizzBuzzTest
     {
         bool divisor;
 
