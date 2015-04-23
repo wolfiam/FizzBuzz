@@ -10,5 +10,13 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source=(LocalDb)\v11.0;AttachDbFilename=C:\Development\FizzBuzzWebApplication\FizzBuzzWebApplication\App_Data\FizzBuzzDatabase.mdf;Integrated Security=True</Value>
     </Setting>
+    <Setting Name="FizzBuzzConnectionString" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;Data Source=PARSLEY.arvixe.com;Initial Catalog=FizzBuzz;Integrated Security=False;User ID=JosephGarza;Password=Fox!1212&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=PARSLEY.arvixe.com;Initial Catalog=FizzBuzz;Integrated Security=False;User ID=JosephGarza;Password=Fox!1212</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

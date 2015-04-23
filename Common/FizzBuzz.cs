@@ -9,9 +9,18 @@ namespace Common
     public class FizzBuzz
     {
         public int Id { get; set; }
-        public int Number { get; set; }
+        public int? Number { get; set; }
         public string Message { get; set; }
-        public DateTime DateTimeEntered { get; set; }
-        public int Active { get; set; }
+        public DateTime? DateTimeEntered { get; set; }
+        public int? Active { get; set; }
+    }
+
+    public class SetUp
+    {
+        public int Id { get; set; }
+        public string Divisor { get; set; }
+        public string Message { get; set; }
+        public DateTime? DateTimeEntered { get; set; }
+        public byte? Active { get; set; }
     }
 }

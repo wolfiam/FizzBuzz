@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public class FizzBuzzTable
+    public class jqGrid
     {
         public int pageIndex { get; set; }
         public int pageSize { get; set; }
@@ -14,8 +14,13 @@ namespace Common
         public int totalPages { get; set; }
     }
 
-    public class jqGridFizzBuzzTable : FizzBuzzTable
+    public class jqGridFizzBuzzTable : jqGrid
     {
         public List<FizzBuzz> rows = new List<FizzBuzz>();
+    }
+
+    public class jqGridSeUpTable : jqGrid
+    {
+        public List<SetUp> rows = new List<SetUp>();
     }
 }

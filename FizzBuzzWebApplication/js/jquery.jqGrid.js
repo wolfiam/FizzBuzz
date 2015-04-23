@@ -7399,7 +7399,7 @@ $.jgrid.extend({
 					}
 				});
 				if( cnt > 0) {
-					var idrow = $("<tr class='FormData' style='display:none'><td class='CaptionTD'></td><td colspan='"+ (maxcols*2-1)+"' class='DataTD'><input class='FormElement' id='id_g' type='text' name='"+obj.p.id+"_id' value='"+rowid+"'/></td></tr>");
+				    var idrow = $("<tr class='FormData' placeholder='test' style='display:none'><td class='CaptionTD'></td><td colspan='" + (maxcols * 2 - 1) + "' class='DataTD'><input class='FormElement' id='id_g' type='text' placeholder='test' name='" + obj.p.id + "_id' value='" + rowid + "'/></td></tr>");
 					idrow[0].rp = cnt+999;
 					$(tb).append(idrow);
 					if(rp_ge[$t.p.id].checkOnSubmit || rp_ge[$t.p.id].checkOnUpdate) {rp_ge[$t.p.id]._savedData[obj.p.id+"_id"] = rowid;}
@@ -8224,7 +8224,7 @@ $.jgrid.extend({
 					}
 				});
 				if( cnt > 0) {
-					var idrow = $("<tr class='FormData' style='display:none'><td class='CaptionTD'></td><td colspan='"+ (maxcols*2-1)+"' class='DataTD'><input class='FormElement' id='id_g' type='text' name='id' value='"+rowid+"'/></td></tr>");
+				    var idrow = $("<tr class='FormData' style='display:none'><td class='CaptionTD'></td><td colspan='" + (maxcols * 2 - 1) + "' class='DataTD'><input class='FormElement' id='id_g' type='text' placeholder='test' name='id' value='" + rowid + "'/></td></tr>");
 					idrow[0].rp = cnt+99;
 					$(tb).append(idrow);
 				}

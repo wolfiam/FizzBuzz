@@ -1,18 +1,18 @@
-namespace FizzBuzzWebApplication.Migrations
+namespace Common.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<FizzBuzzWebApplication.Models.FizzBuzzContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Common.FizzBuzzContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(FizzBuzzWebApplication.Models.FizzBuzzContext context)
+        protected override void Seed(Common.FizzBuzzContext context)
         {
             //  This method will be called after migrating to the latest version.
 

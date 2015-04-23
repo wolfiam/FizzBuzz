@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="PrintRangeTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -92,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{07c16522-592b-4c21-8b37-774af0c3bc57}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FizzBuzzWebApplication\FizzBuzzWebApplication.csproj">
       <Project>{F2102885-7460-4E92-82D5-4FEE33DFC1E6}</Project>
       <Name>FizzBuzzWebApplication</Name>

@@ -33,5 +33,16 @@ namespace Common.Properties {
                 return ((string)(this["FizzBuzzDatabaseConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=PARSLEY.arvixe.com;Initial Catalog=FizzBuzz;Integrated Security=False" +
+            ";User ID=JosephGarza;Password=Fox!1212")]
+        public string FizzBuzzConnectionString {
+            get {
+                return ((string)(this["FizzBuzzConnectionString"]));
+            }
+        }
     }
 }

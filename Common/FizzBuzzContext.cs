@@ -9,6 +9,8 @@ namespace Common
 {
     public class FizzBuzzContext : DbContext
     {
+        public static DbSet<FizzBuzz> FizzBuzzLists { get; set; }
+        public static  DbSet<SetUp> SetUpLists { get; set; }
         public static FizzBuzzDataContext dbconn = new FizzBuzzDataContext();
     }
 }

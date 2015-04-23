@@ -1,10 +1,10 @@
-﻿using FizzBuzzWebApplication.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Common;
 
 
 namespace FizzBuzzWebApplication.Controllers
@@ -19,11 +19,12 @@ namespace FizzBuzzWebApplication.Controllers
         public JsonResult GetFizzBuzzLists(string sidx, string sord, int page, int rows)  //Gets the todo Lists.
         {
 
-            return Json(Repository.results(sidx, sord, page, rows), JsonRequestBehavior.AllowGet);
+            return Json(Common.Repository.results(sidx, sord, page, rows), JsonRequestBehavior.AllowGet);
         }
 
         public void printRange(int from, int to)
         {
+           
             Common.PrintRanges.print(from, to);
         }
 

@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FizzBuzzWebApplication.Models
+namespace Common
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -22,7 +22,7 @@ namespace FizzBuzzWebApplication.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="FizzBuzzDatabase")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="FizzBuzz")]
 	public partial class FizzBuzzDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,10 +33,13 @@ namespace FizzBuzzWebApplication.Models
     partial void InsertFizzBuzzDatabaseTable(FizzBuzzDatabaseTable instance);
     partial void UpdateFizzBuzzDatabaseTable(FizzBuzzDatabaseTable instance);
     partial void DeleteFizzBuzzDatabaseTable(FizzBuzzDatabaseTable instance);
+    partial void InsertSetUpDatabaseTable(SetUpDatabaseTable instance);
+    partial void UpdateSetUpDatabaseTable(SetUpDatabaseTable instance);
+    partial void DeleteSetUpDatabaseTable(SetUpDatabaseTable instance);
     #endregion
 		
 		public FizzBuzzDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["FizzBuzzDatabaseConnectionString"].ConnectionString, mappingSource)
+				base(global::Common.Properties.Settings.Default.FizzBuzzConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -72,6 +75,14 @@ namespace FizzBuzzWebApplication.Models
 				return this.GetTable<FizzBuzzDatabaseTable>();
 			}
 		}
+		
+		public System.Data.Linq.Table<SetUpDatabaseTable> SetUpDatabaseTables
+		{
+			get
+			{
+				return this.GetTable<SetUpDatabaseTable>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FizzBuzzs")]
@@ -82,13 +93,13 @@ namespace FizzBuzzWebApplication.Models
 		
 		private int _Id;
 		
-		private int _Number;
+		private System.Nullable<int> _Number;
 		
 		private string _Message;
 		
-		private System.DateTime _DateTimeEntered;
+		private System.Nullable<System.DateTime> _DateTimeEntered;
 		
-		private int _Active;
+		private System.Nullable<int> _Active;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -96,13 +107,13 @@ namespace FizzBuzzWebApplication.Models
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnNumberChanging(int value);
+    partial void OnNumberChanging(System.Nullable<int> value);
     partial void OnNumberChanged();
     partial void OnMessageChanging(string value);
     partial void OnMessageChanged();
-    partial void OnDateTimeEnteredChanging(System.DateTime value);
+    partial void OnDateTimeEnteredChanging(System.Nullable<System.DateTime> value);
     partial void OnDateTimeEnteredChanged();
-    partial void OnActiveChanging(int value);
+    partial void OnActiveChanging(System.Nullable<int> value);
     partial void OnActiveChanged();
     #endregion
 		
@@ -131,8 +142,8 @@ namespace FizzBuzzWebApplication.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Number", DbType="Int NOT NULL")]
-		public int Number
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Number", DbType="Int")]
+		public System.Nullable<int> Number
 		{
 			get
 			{
@@ -171,8 +182,8 @@ namespace FizzBuzzWebApplication.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeEntered", DbType="DateTime NOT NULL")]
-		public System.DateTime DateTimeEntered
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeEntered", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTimeEntered
 		{
 			get
 			{
@@ -191,8 +202,166 @@ namespace FizzBuzzWebApplication.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Int NOT NULL")]
-		public int Active
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="Int")]
+		public System.Nullable<int> Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SetUps")]
+	public partial class SetUpDatabaseTable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Divisor;
+		
+		private string _Message;
+		
+		private System.Nullable<System.DateTime> _DateTimeEntered;
+		
+		private System.Nullable<byte> _Active;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDivisorChanging(string value);
+    partial void OnDivisorChanged();
+    partial void OnMessageChanging(string value);
+    partial void OnMessageChanged();
+    partial void OnDateTimeEnteredChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateTimeEnteredChanged();
+    partial void OnActiveChanging(System.Nullable<byte> value);
+    partial void OnActiveChanged();
+    #endregion
+		
+		public SetUpDatabaseTable()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Divisor", DbType="NVarChar(MAX)")]
+		public string Divisor
+		{
+			get
+			{
+				return this._Divisor;
+			}
+			set
+			{
+				if ((this._Divisor != value))
+				{
+					this.OnDivisorChanging(value);
+					this.SendPropertyChanging();
+					this._Divisor = value;
+					this.SendPropertyChanged("Divisor");
+					this.OnDivisorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="NVarChar(MAX)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this.OnMessageChanging(value);
+					this.SendPropertyChanging();
+					this._Message = value;
+					this.SendPropertyChanged("Message");
+					this.OnMessageChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeEntered", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTimeEntered
+		{
+			get
+			{
+				return this._DateTimeEntered;
+			}
+			set
+			{
+				if ((this._DateTimeEntered != value))
+				{
+					this.OnDateTimeEnteredChanging(value);
+					this.SendPropertyChanging();
+					this._DateTimeEntered = value;
+					this.SendPropertyChanged("DateTimeEntered");
+					this.OnDateTimeEnteredChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="TinyInt")]
+		public System.Nullable<byte> Active
 		{
 			get
 			{
